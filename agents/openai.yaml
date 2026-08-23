@@ -1,0 +1,7 @@
+interface:
+  display_name: "Theory Writing"
+  short_description: "Reader-facing theory prose, proofs, and LaTeX"
+  default_prompt: "Use $theory-writing-skill to revise this theoretical manuscript while preserving its mathematics and local conventions."
+
+policy:
+  allow_implicit_invocation: true
