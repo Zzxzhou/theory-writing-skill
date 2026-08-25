@@ -25,14 +25,17 @@ x + y, \qquad x - y, \qquad A \times B, \qquad u \cdot v,
 and
 
 ```tex
-\hat{\theta}_t = \theta_0 + \Delta_t.
+\hat{\theta}_{t} = \theta_{0} + \Delta_{t}.
 ```
 
 Avoid source such as `x+y`, `x-y`, or `A\times B`. Treat a unary sign differently: write `-x`, not `- x`. Do not insert spaces inside subscripts or superscripts solely to satisfy the binary-operator rule.
 
-## Braces and accents
+## Explicit braces for math commands and scripts
 
-- Always write `\hat{...}` with explicit braces, even for one token: `\hat{\theta}`, not `\hat \theta` or `\hat\theta`.
+- Enclose the argument of every math-alphabet or font command in explicit braces, even when it is one token. Write `\mathsf{A}`, `\mathcal{F}`, `\mathrm{d}`, `\mathbf{x}`, `\mathbb{R}`, and analogous commands; never rely on next-token forms such as `\mathsf A`, `\mathcal F`, or `\mathrm d`.
+- Apply the same rule to mathematical accents and decorators. Write `\hat{\theta}`, `\widehat{\theta}`, `\tilde{x}`, `\widetilde{x}`, `\bar{x}`, `\overline{x}`, `\vec{x}`, `\dot{x}`, and analogous commands, never `\hat \theta`, `\hat\theta`, or another unbraced next-token form.
+- Always brace subscripts and superscripts, including one-token scripts: write `x_{i}`, `x^{2}`, and `\hat{\theta}_{t}`, not `x_i`, `x^2`, or `\hat{\theta}_t`.
+- More generally, when a mathematical command takes an argument, delimit that argument explicitly with braces rather than relying on TeX's next-token parsing. This rule does not add braces to commands that take no argument in that position, such as relation symbols or named operators.
 - Do not redefine standard commands such as `\hat`, `\tilde`, or `\bar`.
 - Preserve the manuscript's established transpose, norm, support, probability, and expectation macros.
 
