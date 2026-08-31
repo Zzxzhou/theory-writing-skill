@@ -33,6 +33,7 @@ For proof work, reread the surrounding context both before drafting and after co
 
 - Preserve assumptions, events, constants, signs, inequality directions, conditioning information, probability allocations, and theorem scope.
 - Make proofs reader-verifiable. Do not hide load-bearing algebra behind “standard,” “straightforward,” “by calculation,” or “the result follows.”
+- **Work derivation-first, even when the finished manuscript is theorem-first.** When constructing a result or transporting a method, do not begin from a desired theorem and backfill a high-level proof. Start from the primitive model equation, criterion, moment, or optimality condition; derive an exact decomposition; carry every term to the requested scale; and identify each unproved technical input. Only then package the verified chain as lemmas, a theorem, and corollaries. A roadmap or structural analogy may guide this work, but it cannot replace the derivation.
 - Do not introduce notation casually. Add a symbol only when it reduces total reader burden or reveals a recurring structure.
 - Treat proof placement as conditional. Move material to an appendix only after the document has entered an appendix-oriented mode or the user explicitly requests that split.
 - In a note or an undecided draft, keep an existing inline proof inline unless there is a concrete reason to move it.

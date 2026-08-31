@@ -28,6 +28,37 @@ Useful patterns include:
 
 Use named steps only when they help navigation. A short continuous argument does not need artificial headings.
 
+## Derivation before theorem packaging
+
+Use a derivation-first workflow whenever a result is being constructed, extended, or transported rather than merely typeset from an already verified proof. This rule governs the order of mathematical work, not necessarily the final order of exposition: the finished manuscript may place a theorem before its proof, but the theorem statement must be earned by a completed derivation before it is finalized.
+
+### Construction pass
+
+1. Fix the endpoint and required resolution. State the primitive object, the quantity to be derived, the conditioning or information structure, and whether the target is first order, second order, uniform, conditional, finite-sample, or another specified scale. A term may not be discarded until it is shown to be negligible relative to that scale.
+2. Start from the model equation, estimator, objective, sample moment, estimating equation, or optimality condition. Write the first decomposition as an exact identity and state explicitly that no approximation has yet been made.
+3. Separate the roles of the proof devices. Identify which step supplies localization, which supplies linearization, which controls stochastic fluctuations, which identifies an expectation or bias, and which makes the result feasible. Do not present a preliminary device as the main mechanism merely because it appears early in the proof.
+4. Separate components by mathematical status. Mark exact identities, deterministic expansions with explicit remainders, stochastic bounds, conditional statements, and expectation calculations. Expand only objects for which the required smoothness has been established; in particular, do not Taylor-expand a discontinuous sample object merely because its population counterpart is smooth.
+5. Derive the leading approximation from the linear part, substitute it back into the same exact decomposition, and expose every correction channel. Retain every term that can contribute at the target scale instead of absorbing it into a generic Bahadur, Taylor, or empirical-process remainder.
+6. Before replacing an estimator or another random argument by its leading approximation inside a nonlinear term, display the algebraic difference and prove its order. State the rates of both factors whose product yields the claimed remainder; a shared first-order rate alone does not justify replacement.
+7. Audit stochastic size and expectation separately. A term that is too large to discard in probability may have a smaller structured expectation, but that expectation requires its own calculation. An $O_p$ bound does not by itself imply a bias or conditional-expectation bound.
+8. Resolve dependence, nonsmoothness, optimization residuals, and boundary effects at the point where they enter. Expose own-observation feedback before invoking leave-one-out or conditioning, and derive the relevant subgradient or KKT residual rather than replacing it by an unjustified zero.
+9. Close the remainder calculation at the target scale. Give every load-bearing technical input exactly one honest status: proved here; invoked from a precise result after checking its conditions; imposed transparently as an assumption for a conditional theorem; or left explicitly open. Explanatory prose, a desired rate, or a structural analogy is not a proof.
+10. Only after the chain closes, synthesize the result into lemmas, a theorem, and corollaries. Match every theorem assumption to the exact transition where it is used, and do not let theorem packaging erase the mechanism that produced the result.
+
+### Transporting a method
+
+When importing a method from another paper or model:
+
+1. Derive the source mechanism line by line in the smallest setting in which it is valid.
+2. Separate exact algebraic identities from smooth expansions, stochastic bounds, distributional assumptions, and source-specific dimension restrictions.
+3. Identify the main engine and distinguish it from tools that provide only localization, regularity, or auxiliary control.
+4. Give an object-by-object map from the source setting to the target setting.
+5. Re-derive the target model's exact identity from its own primitive object. Structural similarity is a guide, not a proof.
+6. State precisely which source steps survive unchanged and which become new technical obligations because of dimension growth, dependence, normalization, nuisance parameters, conditioning, or a different sampling structure.
+7. Do not finalize the target theorem until those obligations have been proved or assigned one of the explicit statuses in the construction pass.
+
+For every substantive transition $A\to B$, the reader must be able to identify the immediately preceding expression, the single principal operation performed, the fact licensing that operation, the statement's mathematical status, and the remainder scale when applicable. If the reader must invent an intermediate identity, import an unstated rate, or guess why a target-order term disappears, the derivation is too compressed. Step-by-step exposition does not require displaying every formula; it requires showing every load-bearing transition.
+
 ## Continuous derivation
 
 - Start from the original object, not from an unexplained intermediate formula.
