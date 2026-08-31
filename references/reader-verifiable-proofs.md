@@ -83,6 +83,27 @@ For an optimization proof, show the following steps when present:
 
 Expand a quadratic before replacing it with compressed notation. When completing a square or profiling a variable, display the square, show why it is nonnegative, and identify the value at which it vanishes.
 
+## Step granularity and justifications
+
+The test is not whether a step is elementary. The test is whether the reader can verify the transition without reconstructing missing work. Display an intermediate line whenever a transition:
+
+- performs more than one algebraic operation;
+- expands, factors, rearranges, reindexes, or substitutes an expression in a way that changes its visible structure;
+- invokes a definition, assumption, lemma, event, optimality condition, or probabilistic certificate;
+- removes a term, declares a term nonnegative or zero, bounds a term, or changes an equality into an inequality;
+- divides, cancels, normalizes, takes a norm, expectation, supremum, or probability, or otherwise changes the type of the mathematical object;
+- contains a sign, factor, transpose, index, conditioning set, or constant that a compressed step could obscure.
+
+In a multiline derivation, keep one principal transformation on each row. A mechanical row does not need a prose sentence when the displayed formulas make the operation evident, but it should still be shown when it exposes a quantity the reader must check. Do not compress $A \to B \to C$ into $A \to C$ merely because both omitted operations are individually simple.
+
+Identify why each non-obvious equality or inequality is valid. Use the following order:
+
+1. a sentence before the display when one assumption or identity licenses several rows;
+2. a short annotation on the relevant row when it licenses one transition;
+3. an `\underbrace{...}_{...}` when the explanation belongs to one specific term.
+
+Name the exact assumption, lemma, identity, or condition instead of writing “by assumptions.” Keep local annotations short. If the explanation requires a sentence, put it before the display rather than forcing it inside the formula.
+
 ## Cancellations, conditioning, and edge cases
 
 - Display a cross term before setting it to zero.

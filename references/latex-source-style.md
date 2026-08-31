@@ -9,7 +9,9 @@ Follow a repository's explicit local guide when it conflicts with this reference
 - Use `equation` for a numbered one-line display.
 - Use `equation` with nested `aligned` for a numbered multiline display.
 - Avoid `$$...$$`, `\[...\]`, and `equation*` under this profile.
-- Number only equations referenced later.
+- Number a display row only when it is explicitly cross-referenced later in the manuscript with `\eqref{...}` or the manuscript's equivalent equation-reference command.
+- Put every unreferenced display in `align*`. When an existing multirow `align` contains both referenced and unreferenced rows, retain numbers only on the referenced rows; remove each unused `\label{...}` and add `\notag` to the corresponding unreferenced row.
+- Do not leave an automatic number on a row without a label.
 - End displayed equations with the punctuation required by the surrounding sentence.
 
 ## Operator spacing in source
@@ -50,9 +52,11 @@ Avoid source such as `x+y`, `x-y`, or `A\times B`. Treat a unary sign differentl
 
 ## Local explanations inside calculations
 
-- Use `\underbrace` only for a local block identified or replaced immediately.
-- Keep annotations short and mathematical.
-- When a condition justifies a transition, use a brief `\text{...}` annotation or a preceding sentence; do not embed a paragraph inside math.
+- When one assumption or identity licenses several rows, state it in a sentence before the display.
+- When it licenses one row of an `align` derivation, use a compact annotation column such as `&& \text{by Assumption~\ref{ass:curvature}}`.
+- Use `\underbrace{...}_{...}` only when the explanation belongs to a specific local term that is identified, bounded, or replaced immediately. For example, write `\underbrace{\langle u, v \rangle}_{= 0 \text{ by orthogonality}}` when that inner product vanishes at the current step.
+- Name the exact assumption, lemma, identity, or condition; avoid vague annotations such as `\text{by assumptions}`.
+- Keep annotations short and mathematical. If an annotation makes the row wide or requires a sentence, move the explanation before the display; do not embed a paragraph inside math.
 
 ## Cross-references and environments
 
@@ -71,6 +75,7 @@ After editing TeX:
 3. check package errors and relevant warnings;
 4. inspect overfull and underfull boxes;
 5. visually inspect affected pages when displays, annotations, tables, algorithms, or page breaks changed;
-6. review the diff for accidental notation, label, and scope changes.
+6. compare every actual numbered display row with the set of later equation cross-references, including rows inside `align`; convert fully unreferenced displays to `align*`, suppress unreferenced rows in mixed displays, and remove the corresponding unused labels;
+7. review the diff for accidental notation, label, and scope changes.
 
 If an unresolved mathematical issue is outside the authorized edit, mark the exact TeX location with `% TODO-MATH:` and report it to the user. Do not use a prose rewrite to conceal the issue.
