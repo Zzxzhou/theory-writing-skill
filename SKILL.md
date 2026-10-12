@@ -1,6 +1,6 @@
 ---
 name: theory-writing-skill
-description: Draft, revise, structure, and audit reader-facing theoretical research prose, theorem statements, mathematical proofs, and LaTeX source in economics, econometrics, statistics, machine learning, and operations research. Use for theory papers, research notes, technical appendices, proof revisions, notation decisions, document architecture, or mathematical typesetting. Do not use for ordinary nontechnical prose or purely empirical reporting without mathematical exposition.
+description: Draft, revise, structure, and audit reader-facing theoretical research prose, theorem statements, mathematical proofs, and LaTeX source in economics, econometrics, statistics, machine learning, and operations research. Use for standalone proof requests in chat, theory papers, research notes, technical appendices, proof revisions, notation decisions, document architecture, or mathematical typesetting. Do not use for ordinary nontechnical prose or purely empirical reporting without mathematical exposition.
 ---
 
 # Theory Writing
@@ -12,7 +12,7 @@ Write so that a technically prepared reader can locate the claim, understand its
 Load only the references needed for the request:
 
 - For abstracts, introductions, theorem interpretation, section organization, or prose revision, read `references/prose-and-architecture.md`.
-- For any theorem, lemma, derivation, optimization argument, or proof audit, read `references/reader-verifiable-proofs.md` completely.
+- For any theorem, lemma, derivation, optimization argument, or proof audit, including standalone requests in chat and proofs supplied by Pro, Codex, or another model, read `references/reader-verifiable-proofs.md` completely.
 - For TeX creation or editing, read `references/latex-source-style.md` completely in addition to the substantive reference.
 - When the user requests Dennis Shen's style, a style comparison, or an exemplar-based rewrite, read `references/style-exemplars.md`.
 - When a manuscript provides local instructions or a private project profile, read those materials before applying the general defaults in this skill.
@@ -28,6 +28,12 @@ If the task spans multiple modes, load every applicable reference before editing
 5. Preserve established notation and placement unless the user or document structure authorizes a change.
 
 For proof work, reread the surrounding context both before drafting and after completing the proof. Check that every object, condition, and claimed implication still matches the manuscript.
+
+## Proof sources and explanation
+
+For proof requests, first look for a relevant proof in classic anchor papers and prefer a verified, applicable source argument. Read the actual result and proof, identify the precise theorem or lemma and location, and check its assumptions against the current claim. A related citation or a model's attribution does not establish that a proof comes from that paper. Follow the source workflow in `references/reader-verifiable-proofs.md`.
+
+Distinguish direct application of a source result, adaptation of its argument, and a derivation supplied here. If no applicable anchor proof has been verified, say so rather than attaching a familiar paper to an independent argument. For a derivation supplied here, default to a complete, step-by-step explanation: give the mechanism, show intermediate algebra, justify substantive transitions, and expose unresolved gaps. Apply the same standard when checking a proof supplied by Pro or Codex. A verified source argument may also need expansion for the reader.
 
 ## Non-negotiable rules
 

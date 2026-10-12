@@ -2,6 +2,24 @@
 
 Proofs are written for readers, not stored as certificates of correctness. A technically prepared reader should be able to verify each substantive transition without reconstructing omitted algebra.
 
+## Anchor papers and proof provenance
+
+For a new proof request, first look for the closest applicable argument in classic anchor papers, starting with the user's anchors and the manuscript's established references. Prefer canonical source proofs when they establish the required claim under compatible assumptions; relevance and validity govern the choice. A famous but mismatched result cannot support the proof. For a local proof revision, verify and expand the sources used by the affected argument; do not turn a narrow edit into an unrelated literature review.
+
+1. Locate and read the primary source's actual theorem or lemma, assumptions, and proof, including its appendix or supplement when needed. Use a supplied or locally available full text; otherwise search for and inspect the original paper through available research tools. An abstract, search snippet, secondary summary, or remembered attribution is insufficient to verify the proof.
+2. Identify the author, year, paper version when relevant, and exact result and proof location (theorem or lemma number, section, appendix, or page). Report only locators checked against the text. Do not invent a citation, result number, or claim of classical status.
+3. Check the conclusion and every required hypothesis against the current claim. For a direct theorem application, map the target objects to the source objects and verify each hypothesis explicitly. For an adapted argument, explain which steps transfer and derive the changed steps under the current assumptions using the transport workflow below. Do not silently strengthen assumptions to make a source fit.
+4. State the proof's provenance accurately: a direct application, an adaptation, or a derivation supplied here. If only one lemma or technique is borrowed, attribute that component rather than the entire proof. Explain the argument in the current notation and in your own words; expand compressed source steps when needed for verification.
+5. If the source is inaccessible or no applicable anchor proof has been verified, state that limitation. Offer a fully justified derivation where possible, without presenting it as source-verified or claiming research novelty. When adding LaTeX citations, keep bibliography entries in the external `reference.bib`, preserve existing citation keys, and use the project's compatible BibTeX or biblatex setup.
+
+Treat proofs supplied by Pro, Codex, or another model as arguments to be checked under these same rules. Model confidence and polished prose do not establish either correctness or source provenance.
+
+## Step-by-step explanation by default
+
+When supplying a derivation, give a full reader-verifiable proof unless the user explicitly requests a sketch or the task is presentation-only. Briefly explain the mechanism and why the main steps work; then show the chain from the stated definitions and assumptions to the exact conclusion. A roadmap alone is not the proof. Use the step-granularity rules below for intermediate calculations and local justifications, including in conversational answers.
+
+Every auxiliary claim needed to close the argument must be proved or invoked from a precisely identified result after checking its hypotheses. If a missing lemma remains unresolved, identify the exact gap and any conditional conclusion it permits; do not label the argument a complete proof. Disclosing a gap does not replace attempting to resolve it. Do not weaken the requested conclusion or add an assumption without making the change explicit.
+
 ## Context loop
 
 Before writing:
@@ -127,6 +145,8 @@ If the answers do not justify the symbol, keep the original expression. In compl
 
 ## Verification checklist
 
+- Verify each claimed anchor source and proof locator against the primary text; distinguish source results, adapted steps, and derivations supplied here.
+- For every cited theorem, check the target objects and hypotheses; for every new auxiliary claim, check that its proof closes or its unresolved status is explicit.
 - Recompute every sign, factor, transpose, dimension, and inequality direction.
 - Verify that all assumptions used are available at the exact step where they are invoked.
 - Verify constants and probability allocations against the theorem statement.
