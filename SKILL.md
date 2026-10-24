@@ -7,13 +7,28 @@ description: Draft, revise, structure, and audit reader-facing theoretical resea
 
 Write so that a technically prepared reader can locate the claim, understand its mechanism, and verify every substantive transition. Preserve mathematical correctness and local manuscript conventions over generic stylistic preferences.
 
+## Rule priority and task scope
+
+For writing and formatting choices governed by this skill, apply the following order:
+
+1. The user's current explicit instructions, including task-specific exceptions.
+2. The user's established preferences that apply to this task.
+3. Explicit project or manuscript instructions for choices the user has not already settled.
+4. Defaults and recommendations in this skill and its references.
+
+Existing manuscript examples are evidence of local practice; they do not override explicit user instructions. The standing preference against boxed mathematical results applies even when old examples use boxes. Follow a clear user exception without asking for confirmation again. Mathematical validity is not a stylistic preference: disclose a false or unproved step rather than presenting it as established.
+
+Apply instructions only to the requested work. For formatting-only or prose-only edits, preserve mathematical content and check the context needed to avoid changing its meaning. For proof revision, expand and verify the affected argument and its dependencies. For constructing, extending, or transporting a result, derive it from the primitive objects before finalizing the theorem. Reading surrounding material to verify a local edit does not authorize rewriting that material.
+
+Resolve routine choices from the stated scope and this priority order. Ask only when a material ambiguity remains, such as an unresolved choice of assumptions or theorem scope. Continue independent authorized work while identifying the unresolved point.
+
 ## Route the task
 
 Load only the references needed for the request:
 
 - For abstracts, introductions, theorem interpretation, section organization, or prose revision, read `references/prose-and-architecture.md`.
 - For any theorem, lemma, derivation, optimization argument, or proof audit, including standalone requests in chat and proofs supplied by Pro, Codex, or another model, read `references/reader-verifiable-proofs.md` completely.
-- For TeX creation or editing, read `references/latex-source-style.md` completely in addition to the substantive reference.
+- For mathematical notation and formula presentation, including chat derivations, and for TeX creation or editing, read `references/latex-source-style.md` completely in addition to the substantive reference.
 - When the user requests Dennis Shen's style, a style comparison, or an exemplar-based rewrite, read `references/style-exemplars.md`.
 - When a manuscript provides local instructions or a private project profile, read those materials before applying the general defaults in this skill.
 
@@ -37,21 +52,25 @@ Distinguish direct application of a source result, adaptation of its argument, a
 
 ## Non-negotiable rules
 
+- **Across all projects, do not use `\boxed{...}` around mathematical expressions.** This is a standing user preference and applies even when existing project examples use boxed formulas. When removing an existing wrapper, preserve its mathematical content, punctuation, and equation labels.
 - Preserve assumptions, events, constants, signs, inequality directions, conditioning information, probability allocations, and theorem scope.
-- Make proofs reader-verifiable. Display intermediate steps whenever a transition changes algebraic structure, invokes an assumption or definition, drops, bounds, or cancels a term, or changes an equality into an inequality, even if the individual operation is elementary. Do not hide such work behind “standard,” “straightforward,” “by calculation,” or “the result follows.”
+- Make proofs reader-verifiable. Show intermediate expressions whenever a transition changes algebraic structure, invokes an assumption or definition, drops, bounds, or cancels a term, or changes an equality into an inequality, even if the individual operation is elementary. Every substantive step must remain visible; this does not require a new display or row for each step. Do not hide such work behind “standard,” “straightforward,” “by calculation,” or “the result follows.”
 - **Work derivation-first, even when the finished manuscript is theorem-first.** When constructing a result or transporting a method, do not begin from a desired theorem and backfill a high-level proof. Start from the primitive model equation, criterion, moment, or optimality condition; derive an exact decomposition; carry every term to the requested scale; and identify each unproved technical input. Only then package the verified chain as lemmas, a theorem, and corollaries. A roadmap or structural analogy may guide this work, but it cannot replace the derivation.
 - Do not introduce notation casually. Add a symbol only when it reduces total reader burden or reveals a recurring structure.
 - Treat proof placement as conditional. Move material to an appendix only after the document has entered an appendix-oriented mode or the user explicitly requests that split.
 - In a note or an undecided draft, keep an existing inline proof inline unless there is a concrete reason to move it.
 - Use direct, positive prose, but retain qualifications that define the mathematical claim or its boundary.
 - Use external authors as structural exemplars only. Do not imitate distinctive wording or reproduce passages.
+- Keep short definitions, notation introductions, and routine identities inline. Avoid display blocks that merely collect independent definitions after “define,” “write,” or “put.” In mixed blocks, move the short definitions into the surrounding prose and retain the substantive result or derivation as the display. Long central expressions, matrices, and case splits may still be displayed when readability requires it. Keep compact displayed formulas and equality or inequality chains on one line; use multiple rows for genuine step-by-step derivations.
+- Connect distinct mathematical conclusions with brief English, such as “Hence,” “Moreover,” or “Therefore.” Do not collect independent assertions in a multirow display merely because they are related; reserve aligned rows for successive calculations.
 - Number a displayed equation or individual display row only when it is explicitly cross-referenced later in the manuscript. Use an unnumbered display otherwise. In a mixed multirow display, suppress numbering row by row for every unreferenced row.
 
 ## Revise and verify
 
+For a local edit, verify the changed material, its mathematical dependencies, and affected labels and references. Search the full manuscript for uses of an affected label before removing it; this read-only dependency check does not expand the editing scope. Apply numbering rules to affected display rows, including mixed numbered and unnumbered rows. Perform a manuscript-wide numbering or formatting audit only when requested or when the edit is itself manuscript-wide. Report unrelated pre-existing issues without treating their repair as a prerequisite for completing the local edit.
+
 - Make the smallest coherent edit that satisfies the request; preserve unrelated user changes.
-- After mathematical edits, independently check each sign, factor, dimension, equality, inequality, and cancellation.
+- After mathematical edits, independently check each sign, factor, dimension, equality, inequality, and cancellation in the affected argument and its dependencies.
 - After TeX edits, compile the requested target and inspect warnings, references, overfull boxes, and affected pages when the environment permits.
-- After TeX edits, audit every actual numbered display row against later equation cross-references. Remove labels from rows whose numbers are suppressed, and verify that no unlabeled row receives an automatic number.
 - Review the diff for accidental changes to notation, assumptions, theorem scope, labels, and proof placement.
 - If a substantive issue cannot be resolved within scope, identify it explicitly instead of smoothing it over with prose.

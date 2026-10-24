@@ -80,8 +80,8 @@ For every substantive transition $A\to B$, the reader must be able to identify t
 ## Continuous derivation
 
 - Start from the original object, not from an unexplained intermediate formula.
-- Keep related calculations in one continuous `align` chain when practical.
-- Display each load-bearing expansion, substitution, cancellation, and inequality.
+- Keep genuine successive calculations together. A compact equality or inequality chain stays on one line; use multiple aligned rows for an actual step-by-step derivation. Connect distinct mathematical assertions with brief English instead of collecting them in one multirow display.
+- Show each load-bearing expansion, substitution, cancellation, and inequality. Preserve all necessary expressions without forcing a separate display or row for every short identity.
 - Let formulas carry routine algebra. Use prose to state the assumption, identity, optimality condition, or certificate that licenses the next transition.
 - Annotate an equality or inequality locally when the reader otherwise cannot tell which assumption justifies it.
 - Do not replace several steps with “by a standard argument,” “after simplification,” “by calculation,” or “the result follows.”
@@ -103,7 +103,7 @@ Expand a quadratic before replacing it with compressed notation. When completing
 
 ## Step granularity and justifications
 
-The test is not whether a step is elementary. The test is whether the reader can verify the transition without reconstructing missing work. Display an intermediate line whenever a transition:
+The test is not whether a step is elementary. The test is whether the reader can verify the transition without reconstructing missing work. Show an intermediate expression whenever a transition:
 
 - performs more than one algebraic operation;
 - expands, factors, rearranges, reindexes, or substitutes an expression in a way that changes its visible structure;
@@ -112,7 +112,7 @@ The test is not whether a step is elementary. The test is whether the reader can
 - divides, cancels, normalizes, takes a norm, expectation, supremum, or probability, or otherwise changes the type of the mathematical object;
 - contains a sign, factor, transpose, index, conditioning set, or constant that a compressed step could obscure.
 
-In a multiline derivation, keep one principal transformation on each row. A mechanical row does not need a prose sentence when the displayed formulas make the operation evident, but it should still be shown when it exposes a quantity the reader must check. Do not compress $A \to B \to C$ into $A \to C$ merely because both omitted operations are individually simple.
+In a genuine multiline derivation, keep one principal transformation on each row. This is not a requirement to break a short chain such as $A = B \leq C$ into separate rows: keep all intermediate expressions visible on one line when they fit. A mechanical step does not need a prose sentence when the formulas make the operation evident. For distinct conclusions, use brief English connectors and separate inline identities or one-line displays. Do not compress $A \to B \to C$ into $A \to C$ merely because both omitted operations are individually simple.
 
 Identify why each non-obvious equality or inequality is valid. Use the following order:
 
