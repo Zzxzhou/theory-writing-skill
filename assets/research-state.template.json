@@ -34,7 +34,13 @@
         "target_id": "T1",
         "success_criterion": "Test one boundary case."
       },
-      "supersedes": null
+      "supersedes": null,
+      "scope_level": "primitive_model",
+      "primitive_model_verification": {
+        "status": "open",
+        "evidence_ids": [],
+        "note": "Verify high-level assumptions in the intended primitive model before marking model-level results complete."
+      }
     }
   ],
   "assumptions": [
