@@ -48,5 +48,31 @@ class ResearchStateTests(unittest.TestCase):
         self.assertEqual(validate(state), [])
 
 
+    def test_missing_scope_rejected(self):
+        state = copy.deepcopy(self.base)
+        del state["claims"][0]["scope_level"]
+        self.assertTrue(any("scope_level" in x for x in validate(state)))
+
+    def test_model_completion_requires_instantiation(self):
+        state = copy.deepcopy(self.base)
+        state["claims"][0]["workflow_state"] = "complete"
+        self.assertTrue(any("model instantiation" in x for x in validate(state)))
+
+    def test_model_verification_requires_evidence(self):
+        state = copy.deepcopy(self.base)
+        state["claims"][0]["primitive_model_verification"]["status"] = "verified"
+        self.assertTrue(any("model verification requires" in x for x in validate(state)))
+
+    def test_changed_scope_requires_revision(self):
+        state = copy.deepcopy(self.base)
+        state["claims"][0]["scope_level"] = "high_level"
+        self.assertTrue(any("revision" in x for x in validate(state, self.base)))
+
+    def test_event_history_is_append_only(self):
+        previous = copy.deepcopy(self.base)
+        previous["events"] = [{"claim_id": "T1", "to_revision": 1, "to_state": "conjectured"}]
+        self.assertTrue(any("append-only" in x for x in validate(self.base, previous)))
+
+
 if __name__ == "__main__":
     unittest.main()
