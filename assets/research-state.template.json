@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "sample",
+    "research_question": "State the research question.",
+    "primitive_model": "State the data model.",
+    "target": "State the estimand.",
+    "asymptotic_regime": "Specify the limit."
+  },
+  "active_claim_id": "T1",
+  "claims": [
+    {
+      "id": "T1",
+      "revision": 1,
+      "role": "main_result",
+      "statement": "State the conjecture.",
+      "workflow_state": "framing",
+      "epistemic_state": "conjectured",
+      "assumption_ids": [
+        "A1"
+      ],
+      "obligation_ids": [
+        "O1"
+      ],
+      "stress_test_evidence_ids": [],
+      "refutation_evidence_ids": [],
+      "audit": null,
+      "novelty": {
+        "status": "unchecked",
+        "evidence_ids": []
+      },
+      "next_action": {
+        "kind": "stress_test",
+        "target_id": "T1",
+        "success_criterion": "Test one boundary case."
+      },
+      "supersedes": null,
+      "scope_level": "primitive_model",
+      "primitive_model_verification": {
+        "status": "open",
+        "evidence_ids": [],
+        "note": "Verify high-level assumptions in the intended primitive model before marking model-level results complete."
+      }
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "A1",
+      "statement": "State the model condition.",
+      "role": "model",
+      "necessity": "unknown",
+      "source": "Model."
+    }
+  ],
+  "obligations": [
+    {
+      "id": "O1",
+      "claim_id": "T1",
+      "statement": "Check identification.",
+      "status": "open",
+      "dependency_ids": [],
+      "evidence_ids": [],
+      "assumption_id": null
+    }
+  ],
+  "evidence": [],
+  "events": []
+}

@@ -1,7 +1,7 @@
 interface:
-  display_name: "Theory Writing"
-  short_description: "Reader-facing theory prose, proofs, and LaTeX"
-  default_prompt: "Use $theory-writing-skill to revise this theoretical manuscript while preserving its mathematics and local conventions."
+  display_name: "Theory Writing & Research"
+  short_description: "Research conjectures, proofs, audits, and theory manuscripts"
+  default_prompt: "Use $theory-writing-skill for theory research or writing. Choose only relevant research modes, preserve mathematical correctness, and track multi-session proof state when appropriate."
 
 policy:
   allow_implicit_invocation: true
