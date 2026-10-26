@@ -8,6 +8,8 @@ WORKFLOW = {"framing", "falsification", "derivation", "audit", "literature", "wr
 EPISTEMIC = {"conjectured", "stress_tested", "proof_in_progress", "conditional", "proof_drafted", "audited", "refuted", "superseded"}
 CLOSED = {"proved_here": "derivation", "verified_source": "source_proof"}
 TYPES = {"stress_test", "derivation", "source_proof", "counterexample", "review", "literature_comparison"}
+SCOPE = {"fixed_dim", "deterministic", "diagnostic", "high_level", "primitive_model"}
+MODEL_VERIFY = {"not_applicable", "open", "verified"}
 
 def validate(state, previous=None):
     errors = []
@@ -35,6 +37,23 @@ def validate(state, previous=None):
         ep, wf = c.get("epistemic_state"), c.get("workflow_state")
         if not isinstance(rev, int) or rev < 1: error(cid + ": invalid revision")
         if ep not in EPISTEMIC or wf not in WORKFLOW: error(cid + ": unknown state")
+        scope = c.get("scope_level")
+        verification = c.get("primitive_model_verification") or {}
+        verification_status = verification.get("status")
+        if scope not in SCOPE: error(cid + ": unknown scope_level")
+        if verification_status not in MODEL_VERIFY: error(cid + ": unknown model verification status")
+        if scope in {"primitive_model", "high_level"} and verification_status == "not_applicable":
+            error(cid + ": primitive-model applicability cannot be not_applicable")
+        if scope in {"fixed_dim", "deterministic", "diagnostic"} and verification_status != "not_applicable":
+            error(cid + ": limited-scope result must use not_applicable model verification")
+        if verification_status == "verified" and not any(
+            evidenced(cid, rev, eid, kind)
+            for eid in verification.get("evidence_ids", [])
+            for kind in ("derivation", "source_proof")
+        ):
+            error(cid + ": model verification requires located derivation or source evidence")
+        if wf == "complete" and scope == "primitive_model" and verification_status != "verified":
+            error(cid + ": completed primitive-model claim requires verified model instantiation")
         for a in c.get("assumption_ids", []):
             if a not in assumptions: error(cid + ": unknown assumption " + a)
         obs = [obligations[x] for x in c.get("obligation_ids", []) if x in obligations]
@@ -52,7 +71,7 @@ def validate(state, previous=None):
         closed = all(o.get("status") in set(CLOSED) | {"assumed_explicitly"} for o in obs)
         if ep == "stress_tested" and not any(evidenced(cid, rev, x, "stress_test") for x in c.get("stress_test_evidence_ids", [])):
             error(cid + ": stress test not documented")
-        if ep == "proof_in_progress" and not any(e.get("claim_id") == cid and e.get("claim_revision") == rev and e.get("type") == "derivation" for e in evidence.values()):
+        if ep == "proof_in_progress" and not any(evidenced(cid, rev, eid, "derivation") for eid in evidence):
             error(cid + ": no derivation evidence")
         if ep == "conditional" and not any(o.get("status") == "open" for o in obs):
             error(cid + ": conditional needs open obligation")
@@ -77,10 +96,12 @@ def validate(state, previous=None):
     if previous:
         old = {x["id"]: x for x in previous.get("claims", [])}
         transitions = {(e.get("claim_id"), e.get("to_revision"), e.get("to_state")) for e in state["events"]}
+        if len(state["events"]) < len(previous.get("events", [])) or state["events"][:len(previous.get("events", []))] != previous.get("events", []):
+            error("events history must be append-only")
         for cid, c in claims.items():
             if cid not in old: continue
             prior = old[cid]
-            changed_scope = any(c.get(k) != prior.get(k) for k in ("statement", "assumption_ids", "obligation_ids"))
+            changed_scope = any(c.get(k) != prior.get(k) for k in ("statement", "scope_level", "assumption_ids", "obligation_ids"))
             if changed_scope and c["revision"] <= prior["revision"]:
                 error(cid + ": changed scope without revision increment")
             if changed_scope and c.get("audit") and c["audit"].get("claim_revision") != c["revision"]:
