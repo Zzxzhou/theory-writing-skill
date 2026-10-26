@@ -16,10 +16,24 @@ The state file is a structured **index of evidence**, not the proof itself. A pa
 
 A proof-shaped document is not a proof. A passed syntactic validator is not a mathematical guarantee. A successful self-review is not an independent audit. A novelty check is distinct from mathematical verification.
 
+## Claim scope and primitive-model applicability
+
+A pilot on a heterogeneous-slope distribution-regression panel revealed a third distinction: even a mathematically valid theorem under high-level Fisher and first-step assumptions need not be verified for the proposed **primitive** panel model.
+
+Every claim therefore records `scope_level` (`fixed_dim`, `deterministic`, `diagnostic`, `high_level`, or `primitive_model`) and `primitive_model_verification.status` (`not_applicable`, `open`, or `verified`). This is separate from both workflow activity and proof status.
+
+- A fixed-dimensional algebraic identity may be `proof_drafted` while extension to growing nuisance dimension remains open.
+- A high-level conditional theorem can eventually be audited **at its exact stated scope** without thereby proving its assumptions for a specific panel design.
+- A `primitive_model` claim cannot be marked workflow `complete` while its model-instantiation check remains `open`.
+- Any change in a claim's mathematical `scope_level` counts as a claim revision. Avoid changing scope silently to make a blocked theorem look complete.
+- For a change in conditioning information, such as conditioning on local Z_it versus the **entire** design, require an explicit compatibility assumption or proof of implication; ordinary consistency of the local conditional law is insufficient.
+
+A state validator can check that these distinctions are recorded, but it cannot verify a Fisher eigenvalue bound or a conditional distribution restriction itself.
+
 ## Main objects
 
 - `project`: research question, primitive model, target, and asymptotic regime.
-- `claims`: persistent IDs (`T1`, `L1`), **revision numbers**, verbatim statements, claim role, both states, assumption and proof-obligation IDs, audit, novelty, and an actionable next step.
+- `claims`: persistent IDs (`T1`, `L1`), **revision numbers**, verbatim statements, claim role, workflow/epistemic states, scope level, primitive-model verification status, assumption and proof-obligation IDs, audit, novelty, and an actionable next step.
 - `assumptions`: one condition per ID, typed by role; necessity is separately classified.
 - `obligations`: load-bearing mathematical claims, dependency IDs, status (`open`, `proved_here`, `verified_source`, `assumed_explicitly`, `refuted`), evidence IDs, and any formal assumption ID.
 - `evidence`: stable IDs and exact source locators, with a type (`stress_test`, `derivation`, `source_proof`, `counterexample`, `review`, `literature_comparison`), associated claim revision, and concise factual finding.
@@ -38,7 +52,7 @@ The common path is `conjectured -> stress_tested -> proof_in_progress -> proof_d
 - `audited`: the proof-drafted requirements hold **and** a passing, located `review` matches this claim revision. The review must record a real separate-context agent or human reviewer, not just a self-assigned persona.
 - `refuted`: a checked `counterexample` is linked and explicitly satisfies the claim's stated assumptions.
 - `superseded`: a replacement claim is identified in the state.
-- `workflow_state=complete`: requires `audited`; for a main result, also requires a source-checked `literature_comparison`. Supporting lemmas may be complete without novelty checking.
+- `workflow_state=complete`: requires `audited`; for a main result, also requires a source-checked `literature_comparison`. A primitive-model scoped claim additionally requires `primitive_model_verification.status=verified`. Supporting lemmas may be complete without novelty checking.
 
 Changing statement, assumption set, or obligation set **increments revision**, resets stale audit, and requires a revision event. Never change status silently: append a transition event. Refuted claims remain recorded rather than being erased.
 
