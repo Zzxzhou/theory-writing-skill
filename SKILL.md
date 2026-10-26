@@ -1,6 +1,6 @@
 ---
 name: theory-writing-skill
-description: Draft, revise, structure, and audit reader-facing theoretical research prose, theorem statements, mathematical proofs, and LaTeX source in economics, econometrics, statistics, machine learning, and operations research. Use for standalone proof requests in chat, theory papers, research notes, technical appendices, proof revisions, notation decisions, document architecture, or mathematical typesetting. Do not use for ordinary nontechnical prose or purely empirical reporting without mathematical exposition.
+description: Develop, stress-test, prove, audit, draft, revise, and organize mathematical research claims, theoretical prose, and LaTeX source in economics, econometrics, statistics, machine learning, and operations research. Use for standalone proof requests in chat, theory papers, research notes, technical appendices, proof revisions, notation decisions, document architecture, or mathematical typesetting. Do not use for ordinary nontechnical prose or purely empirical reporting without mathematical exposition.
 ---
 
 # Theory Writing
@@ -18,6 +18,17 @@ Load only the references needed for the request:
 - When a manuscript provides local instructions or a private project profile, read those materials before applying the general defaults in this skill.
 
 If the task spans multiple modes, load every applicable reference before editing.
+
+
+## Research modes and persistent state
+
+This skill also supports exploratory **theoretical research**, but do not activate its research workflow for language-only or formatting-only revisions.
+
+- For a conjecture, new theorem, proof search, assumption weakening, proof refereeing, or theoretical novelty comparison, read `references/research-modes.md` and activate only the relevant modes: Conjecture Stress Testing, Proof Architecture & Search, Assumption Minimization, Independent Referee, and Literature & Novelty Audit.
+- For long-running projects, multi-session derivations, or requests to track research progress, also read `references/research-workflow-state.md`. Keep each project's state file in that **project** (copy `assets/research-state.template.json`), not in this reusable skill. Validate it with `scripts/validate_research_state.py`.
+- A research mode does not override the derivation-first or source-provenance rules: for any proof, still read `references/reader-verifiable-proofs.md` completely; for any TeX edit, read `references/latex-source-style.md`.
+- Workflow activity is distinct from mathematical status. Never label a claim audited solely because LaTeX compiles, an agent has produced a complete-looking proof, or a model reviewed its own work.
+- When a result is blocked, preserve the strongest verified partial statement, exact missing obligation, and a testable next action. A failed proof search or counterexample can be a valuable research outcome.
 
 ## Establish context before writing
 
