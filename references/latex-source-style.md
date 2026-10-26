@@ -32,6 +32,20 @@ and
 
 Avoid source such as `x+y`, `x-y`, or `A\times B`. Treat a unary sign differently: write `-x`, not `- x`. Do not insert spaces inside subscripts or superscripts solely to satisfy the binary-operator rule.
 
+## Adaptive delimiter spacing in source
+
+Use one ordinary ASCII source space around each adaptive delimiter unit: before `\left` when another mathematical token precedes it, after the opening delimiter, before `\right`, and after the closing delimiter when another mathematical token follows it. Keep each sizing command attached to its delimiter, such as `\left(` and `\right)`. Apply the same convention to adaptive square brackets, braces, absolute values, norms, and angle brackets, including nested expressions.
+
+Prefer:
+
+```tex
+\Var \left( X \right)
+\E \left[ g \left( X \right) \right]
+\left\{ x : x > 0 \right\}, \quad \left| x \right|, \quad \left\| v \right\|, \quad \left\langle u, v \right\rangle.
+```
+
+Do not add padding at math boundaries, inside TeX argument or script braces, or before punctuation. Keep subscripts and superscripts attached to the expression they modify, as in `\left( X \right)^{2}`. These are ordinary source spaces; do not replace them with `\,`, `\;`, or other layout commands. Apply this convention to formula source in chat as well as in TeX files.
+
 ## Explicit braces for math commands and scripts
 
 - Enclose the argument of every math-alphabet or font command in explicit braces, even when it is one token. Write `\mathsf{A}`, `\mathcal{F}`, `\mathrm{d}`, `\mathbf{x}`, `\mathbb{R}`, and analogous commands; never rely on next-token forms such as `\mathsf A`, `\mathcal F`, or `\mathrm d`.
