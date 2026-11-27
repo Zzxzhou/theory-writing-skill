@@ -133,6 +133,8 @@ Name the exact assumption, lemma, identity, or condition instead of writing “b
 
 ## Notation gate
 
+Apply the full introduction, declaration, object-continuity, and audit protocol in `notation-discipline.md`. The questions below are a quick gate, not a substitute for that reference.
+
 Do not introduce notation merely to shorten the current line. Before adding a symbol, ask:
 
 1. Is the expression used repeatedly?
@@ -141,7 +143,7 @@ Do not introduce notation merely to shorten the current line. Before adding a sy
 4. Will it remain useful after this proof step?
 5. Does it conflict with notation elsewhere in the manuscript?
 
-If the answers do not justify the symbol, keep the original expression. In complicated calculations, preserving the original notation may expose cancellations, block structure, or dependence that an alias would conceal. Remove stale notation after reorganizing a proof.
+If the answers do not justify the symbol, keep the original expression. In complicated calculations, preserving the original notation may expose cancellations, block structure, or dependence that an alias would conceal. Remove stale notation after reorganizing a proof. A necessary one-use witness or a meaningful structural abstraction is permitted; repeated use alone does not justify an alias.
 
 ## Verification checklist
 
@@ -150,6 +152,6 @@ If the answers do not justify the symbol, keep the original expression. In compl
 - Recompute every sign, factor, transpose, dimension, and inequality direction.
 - Verify that all assumptions used are available at the exact step where they are invoked.
 - Verify constants and probability allocations against the theorem statement.
-- Check that every symbol is defined before use and has the same meaning in the main text and appendix.
+- Check that every symbol is defined before use and has the same meaning in the main text and appendix. Run the separate notation audit and reader replay for substantive mathematical work.
 - Check that prose claims exactly what the displayed calculation proves.
 - If a gap remains, state it explicitly; do not bridge it with rhetoric.
