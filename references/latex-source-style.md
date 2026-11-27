@@ -2,6 +2,8 @@
 
 Follow a repository's explicit local guide when it conflicts with this reference. Otherwise use these conventions as the default personal profile.
 
+For substantive notation choices or changes, also apply `notation-discipline.md`. A formatting-only edit must not silently change mathematical meaning or rename symbols; existing macros and semantic conventions take precedence.
+
 ## Math environments
 
 - Use `$...$` for inline mathematics.
