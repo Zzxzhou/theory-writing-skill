@@ -8,6 +8,8 @@ The reusable `theory-writing-skill` contains the protocol and a blank template. 
 
 The state file is a structured **index of evidence**, not the proof itself. A path and a high confidence statement are insufficient if the underlying proof is absent. If source files disagree with a saved status, report the discrepancy and correct the state instead of silently proceeding.
 
+For recurring notation ambiguity or multi-agent work, use an existing project notation guide or an optional compact project-local register as described in `notation-discipline.md`. Reconcile it with the actual manuscript; it is not a proof certificate and does not alter the research-state schema.
+
 ## Orthogonal state axes
 
 `workflow_state` tells us *what activity is taking place*: `framing`, `falsification`, `derivation`, `audit`, `literature`, `writing`, `blocked`, or `complete`.

@@ -13,6 +13,7 @@ Load only the references needed for the request:
 
 - For abstracts, introductions, theorem interpretation, section organization, or prose revision, read `references/prose-and-architecture.md`.
 - For any theorem, lemma, derivation, optimization argument, or proof audit, including standalone requests in chat and proofs supplied by Pro, Codex, or another model, read `references/reader-verifiable-proofs.md` completely.
+- For mathematical notation decisions, substantive derivations, proof revisions or audits, read `references/notation-discipline.md` completely. Apply it also to notation-changing TeX edits; formatting-only edits preserve mathematical notation.
 - For TeX creation or editing, read `references/latex-source-style.md` completely in addition to the substantive reference.
 - When the user requests Dennis Shen's style, a style comparison, or an exemplar-based rewrite, read `references/style-exemplars.md`.
 - When a manuscript provides local instructions or a private project profile, read those materials before applying the general defaults in this skill.
@@ -51,7 +52,7 @@ Distinguish direct application of a source result, adaptation of its argument, a
 - Preserve assumptions, events, constants, signs, inequality directions, conditioning information, probability allocations, and theorem scope.
 - Make proofs reader-verifiable. Display intermediate steps whenever a transition changes algebraic structure, invokes an assumption or definition, drops, bounds, or cancels a term, or changes an equality into an inequality, even if the individual operation is elementary. Do not hide such work behind “standard,” “straightforward,” “by calculation,” or “the result follows.”
 - **Work derivation-first, even when the finished manuscript is theorem-first.** When constructing a result or transporting a method, do not begin from a desired theorem and backfill a high-level proof. Start from the primitive model equation, criterion, moment, or optimality condition; derive an exact decomposition; carry every term to the requested scale; and identify each unproved technical input. Only then package the verified chain as lemmas, a theorem, and corollaries. A roadmap or structural analogy may guide this work, but it cannot replace the derivation.
-- Do not introduce notation casually. Add a symbol only when it reduces total reader burden or reveals a recurring structure.
+- Enforce notation discipline: inherit the canonical notation, earn each new symbol, declare it near use, preserve object identity and relevant dependencies, and explicitly map changes of representation. Do not rename or compress solely for shorter formulas. Follow `references/notation-discipline.md`.
 - Treat proof placement as conditional. Move material to an appendix only after the document has entered an appendix-oriented mode or the user explicitly requests that split.
 - In a note or an undecided draft, keep an existing inline proof inline unless there is a concrete reason to move it.
 - Use direct, positive prose, but retain qualifications that define the mathematical claim or its boundary.
@@ -62,6 +63,7 @@ Distinguish direct application of a source result, adaptation of its argument, a
 
 - Make the smallest coherent edit that satisfies the request; preserve unrelated user changes.
 - After mathematical edits, independently check each sign, factor, dimension, equality, inequality, and cancellation.
+- After substantive mathematical work or notation changes, perform the separate notation audit and reader replay in `references/notation-discipline.md`; do not mistake self-audit for independent proof verification.
 - After TeX edits, compile the requested target and inspect warnings, references, overfull boxes, and affected pages when the environment permits.
 - After TeX edits, audit every actual numbered display row against later equation cross-references. Remove labels from rows whose numbers are suppressed, and verify that no unlabeled row receives an automatic number.
 - Review the diff for accidental changes to notation, assumptions, theorem scope, labels, and proof placement.
